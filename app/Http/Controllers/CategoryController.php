@@ -30,4 +30,10 @@ class CategoryController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function destroy($id){
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back();
+    }
 }

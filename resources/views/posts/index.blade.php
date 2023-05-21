@@ -14,7 +14,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
-            <a href="#" class="btn btn-primary mb-3 px-4">Buat Post</a>
+            <a href="{{route('posts.create')}}" class="btn btn-primary mb-3 px-4">Buat Post</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -38,8 +38,8 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->slug }}</td>
                             <td>{{ $post->body }}</td>
-                            <td>{{ $post->user->name }}</td>
-                            <td>{{ $post->category->name }}</td>
+                            <td>{{ $post->user->name ?? ''}}</td>
+                            <td>{{ $post->category->name}}</td>
                             <td>
                             <div class="dropdown">
                                 <i class="fa fa-ellipsis-v" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>

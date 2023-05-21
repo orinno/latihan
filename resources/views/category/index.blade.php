@@ -43,8 +43,8 @@
                             <div class="dropdown">
                                 <i class="fa fa-ellipsis-v" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" data-toggle="modal" href="#modal_edit_category{{$category->id}}">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal_edit_category{{$category->id}}" href="">Edit</a>
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal_delete{{$category->id}}" href="">Delete</a>
                                 </div>
                             </div>
                             </td>
@@ -74,8 +74,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
       </form>
     </div>
@@ -99,8 +99,29 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal_delete{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5" id="exampleModalLabel">Hapus Kategori</h5>
+      </div>
+      <form action="{{ route('category.index.destroy', $item->id) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <div class="modal-body">
+            <p>Apakah anda yakin? Data akan dihapus permanen!</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-primary">Ya</button>
         </div>
       </form>
     </div>

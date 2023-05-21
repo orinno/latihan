@@ -25,26 +25,31 @@
         </div>
         <!-- Card Body -->
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Judul</label>
-                        <input type="text" name="title" class="form-control form-control-user" placeholder="Belajar Laravel Dasar">
+            <form action="{{ route('posts.create.store') }}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Judul</label>
+                            <input type="text" name="title" class="form-control form-control-user" placeholder="Belajar Laravel Dasar">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationDefault04">Category</label>
+                        <select class="custom-select" name="category_id" id="validationDefault04" required>
+                            <option selected disabled value="">Choose...</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="validationDefault04">Category</label>
-                    <select class="custom-select" name="category_id" id="validationDefault04" required>
-                        <option selected disabled value="">Choose...</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
+                    <textarea name="body" rows="5" class="summernote form-control" style=""></textarea>
                 </div>
-            </div>
-            <div class="row">
-                <textarea name="body" rows="5" class="summernote form-control"></textarea>
-            </div>
+                <button type="submit" class="btn btn-primary mt-3">Save</button>
+            </form>
+            
         </div>
     </div>
 </div>
